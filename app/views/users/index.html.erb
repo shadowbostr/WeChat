@@ -1,0 +1,33 @@
+
+
+<h2>Users</h2>
+
+<%= form_with url: "/search", method: :get do |form| %>
+  <%= form.label :query, "Search by email :" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
+
+
+<div class="container ">
+  <table id='UsersTable' class="table table-hover">
+
+    <tbody id='UsersTableBody' >
+    <%= render partial: 'user', collection: @users %>
+    </tbody>
+  </table>
+</div>
+
+
+
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @users %>
+  </div>
+  <%= will_paginate @users, :container => false %>
+</div>
+
+<br>
+
+

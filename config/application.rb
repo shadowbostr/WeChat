@@ -18,5 +18,7 @@ module WeChat
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    # Use Vips for processing variants.
+    config.active_storage.variant_processor = :image_processing
   end
 end

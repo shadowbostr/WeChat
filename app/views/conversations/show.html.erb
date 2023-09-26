@@ -1,0 +1,16 @@
+ <%= @conversation.users.pluck(:username).join(", ") %></h1>
+
+<div id="messages">
+      <%= render partial: 'messages/message', collection: @messages %>
+
+</div>
+
+
+ <div class="fixed-bottom">
+   <%= form_with(model: [@conversation, @conversation.messages.build]) do |form| %>
+     <%= form.hidden_field :conversation_id, value: @conversation.id %>
+     <%= form.text_area :content %>
+     <%= form.submit 'Send Message' %>
+   <% end %>
+ </div>
+

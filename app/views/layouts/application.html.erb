@@ -7,9 +7,33 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    body {
+    padding-top: 55px;
+    }
   </head>
 
   <body>
+<!--    rendering header partial-->
+  <%= render 'common/header' %>
+  <div class="container-fluid mt-5 ">
+
+    <!--     flash messages-->
+    <% if notice %>
+      <p class = "alert alert-success alert-dismissible">
+        <%= notice %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </p>
+    <% end %>
+    <% if alert %>
+      <p class = "alert alert-danger alert-dismissible ">
+        <%= alert %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </p>
+    <% end %>
+
     <%= yield %>
+  </div>
   </body>
 </html>
