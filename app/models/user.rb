@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   #scopes
   scope :except_users, ->(user_ids){ where.not( id: user_ids) }
-  scope :search_by_email, ->(email) { where('email LIKE ?', "#{email}%") if email.present? }
+  scope :search_by_email, ->(email) { where('email LIKE ?', "%#{email}%") if email.present? }
 
   # callbacks
   after_commit :add_default_avatar, on: %i[create update]
