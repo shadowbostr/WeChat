@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 root to: 'users#index'
 get '/search', to: 'users#index'
 
-get '/conversations/create_conversation/:user_id', to: 'conversations#create_conversation', as: 'chat'
+post '/conversations/create_conversation/:user_id', to: 'conversations#create_conversation', as: 'chat'
 
 
 
 
   resources :conversations, only: [:show] do
-    resources :messages, only: [:create]
+    resources :messages, only: [ :create, :destroy ]
   end
 
 

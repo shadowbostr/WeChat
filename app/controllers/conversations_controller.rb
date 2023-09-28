@@ -16,6 +16,7 @@ end
   def show
     @conversation = Conversation.find(params[:id])
     @messages = @conversation.messages.includes(:user)
+    @selected_user = @conversation.users.where.not(id: current_user.id).first
 
   end
 

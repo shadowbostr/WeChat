@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable,
          :rememberable, :validatable, :confirmable, :lockable
 
+  self.per_page = 10
 
   # Associations
    has_and_belongs_to_many :conversations, join_table: 'conversations_users'
@@ -33,7 +34,7 @@ class User < ApplicationRecord
   end
 
   def avatar_thumbnail
-    avatar.variant(resize_to_limit: [80,80])
+    avatar.variant(resize_to_limit: [70,70])
   end
 
   private

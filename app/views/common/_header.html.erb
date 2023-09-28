@@ -1,8 +1,18 @@
 
-<nav class="navbar  bg-primary navbar-expand-lg  fixed-top  ">
+<nav class="navbar  bg-success navbar-expand-lg  fixed-top  ">
   <div class="container-fluid">
     <a class="navbar-brand h1 " href="/">WeChat</a>
-     <div class="d-flex  ">
+
+    <% if controller_name == 'conversations' %>
+      <div class="justify-content-center">
+        <%= image_tag @selected_user.avatar_thumbnail, class: "rounded-circle", alt: "Avatar" %>
+        <span class="h2"><%= @selected_user.username %></span>
+      </div>
+    <% end %>
+
+
+    <div class="d-flex  ">
+
     <% if user_signed_in? %>
       <%= link_to current_user.username, edit_user_registration_path, class: "badge badge text-bg-light m-2" %>
       <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: " btn btn-sm  text-bg-warning  m-2" %>

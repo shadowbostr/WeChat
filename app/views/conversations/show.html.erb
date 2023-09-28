@@ -1,16 +1,23 @@
- <%= @conversation.users.pluck(:username).join(", ") %></h1>
 
-<div id="messages">
-      <%= render partial: 'messages/message', collection: @messages %>
-
+<div class="container mt-5">
+  <div id="messages" class="row">
+    <%= render partial: 'messages/message', collection: @messages %>
+  </div>
 </div>
 
+<div class="fixed-bottom bg-secondary border-top py-3">
+  <div class="container">
+    <%= form_with(model: [@conversation, @conversation.messages.build], local: false, remote: true ) do |form| %>
+      <%= form.hidden_field :conversation_id, value: @conversation.id %>
+      <div class="row align-items-center">
+        <div class="col-10">
+          <%= form.text_area :content, class: "form-control mb-2" %>
+        </div>
+        <div class="col-2">
+          <%= form.submit 'Send', class: "btn btn-primary w-100" %>
+        </div>
+      </div>
 
- <div class="fixed-bottom">
-   <%= form_with(model: [@conversation, @conversation.messages.build]) do |form| %>
-     <%= form.hidden_field :conversation_id, value: @conversation.id %>
-     <%= form.text_area :content %>
-     <%= form.submit 'Send Message' %>
-   <% end %>
- </div>
-
+    <% end %>
+  </div>
+</div>

@@ -8,6 +8,9 @@ class Conversation < ApplicationRecord
    # Single conversation can hold many messages
    has_many :messages  # the conversation could contain many messages
 
-  # scope :message_count, -> {}
+
+  def sender_messages_count(sender)
+    self.messages.where(user_id: sender.id).count
+  end
 
 end
