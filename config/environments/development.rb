@@ -83,6 +83,7 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.hosts << "wechat-z5ph.onrender.com"
   config.action_mailer.default_url_options = { host: 'https://wechat-z5ph.onrender.com', port: 3000 }
   config.active_job.queue_adapter = :async
   config.action_mailer.delivery_method = :smtp
