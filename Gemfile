@@ -62,3 +62,4 @@ gem 'jquery-rails'
 #to create image variant
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
+gem 'cancancan'

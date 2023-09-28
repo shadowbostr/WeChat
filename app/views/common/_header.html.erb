@@ -4,7 +4,10 @@
     <a class="navbar-brand h1 " href="/">WeChat</a>
 
     <% if controller_name == 'conversations' %>
+
       <div class="justify-content-center">
+        <%= link_to raw('<i class="bi bi-arrow-left"></i> Back'), root_path, class: 'btn btn-secondary' %>
+
         <%= image_tag @selected_user.avatar_thumbnail, class: "rounded-circle", alt: "Avatar" %>
         <span class="h2"><%= @selected_user.username %></span>
       </div>

@@ -4,5 +4,13 @@ class Message < ApplicationRecord
 
   #validations
   validates :content, presence: true
+  
+  #callbacks
+  after_commit 
+  
+  def notify_new_message_presence
+    conversation.new_message_presence = true
+    save
+  end
 
 end

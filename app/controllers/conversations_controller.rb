@@ -20,10 +20,16 @@ end
 
   end
 
+  def mark_as_read
+    @conversation = conversation_params[:id]
+    @conversation.new_message_presence = false
+    @conversation.save
+  end
+
   private
 
   def conversation_params
-    params.require(:conversation).permit(:user_id)
+    params.require(:conversation).permit(:id,:user_id)
   end
 
 end

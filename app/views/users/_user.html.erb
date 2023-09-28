@@ -1,8 +1,17 @@
+<% conversation = current_user.conversations.find_by(id: user.conversations.pluck(:id)) %>
 <tr>
      <td> <%= user.username %> </td>
      <td> <%= user.email %> </td>
-     <td> <%= button_to 'Chat', chat_path(user) %> </td>
-     <% if (conversation = current_user.conversations.find_by(id: user.conversations.pluck(:id))) %>
+     <td> <%= button_to chat_path(user), method: :post, class: "btn btn-primary position-relative" do %>
+         Chat
+         <% if conversation && conversation.new_message_presence %>
+    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+      <span class="visually-hidden">New alerts</span>
+    </span>
+         <% end %>
+       <% end %>
+     </td>
+     <% if conversation %>
     <td>  sent : <%=  sent_count = conversation.sender_messages_count(current_user)%> </td>
      <%  total = conversation.messages_count.to_i %>
     <td>  received:  <%= total  - sent_count  %>  </td>
