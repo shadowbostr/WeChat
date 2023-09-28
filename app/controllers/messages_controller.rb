@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
         format.html { redirect_to conversation_path(@message.conversation), notice: "message sent." }
         format.js
       else
-        format.html { redirect_to conversation_path(@conversation)  }
+        format.html { redirect_to conversation_path(@conversation),  status: :unprocessable_entity  }
         format.js
 
       end

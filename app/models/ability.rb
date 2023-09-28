@@ -5,7 +5,7 @@ class Ability
 
   def initialize(user)
 
-    can [ :destroy], Message, user: user
+    can  :destroy, Message, user: user
 
   end
 end
