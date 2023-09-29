@@ -1,0 +1,6 @@
+$('#message_<%= @message.id %>').replaceWith('<%= j render "messages/message", message: @message %>');
+$('textarea').val('');
+$('#submit_btn').val('Send');
+
+$('#message_form').attr('action', '<%= conversation_message_path(@message.conversation_id) %>');
+$('#message_form').attr('method', 'post');

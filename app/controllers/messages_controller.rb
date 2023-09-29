@@ -26,13 +26,13 @@ class MessagesController < ApplicationController
     authorize! :destroy, @message
     @conversation = @message.conversation
 
-    if @message.destroy
-      respond_to do |format|
+    respond_to do |format|
+      if @message.destroy
         format.html { redirect_to conversation_path(@conversation) }
         format.js
-      end
     else
       format.js
+      end
     end
   end
 

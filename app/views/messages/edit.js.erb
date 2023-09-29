@@ -1,0 +1,11 @@
+
+        // Change the form text area value to the message content
+        $('#form_text').val(<%= "#{@message}" %>);
+
+
+        // Change the form submit button text to "Edit"
+         $('#submit_btn').val('Edit');
+
+        $('#message_form').attr('action', '<%= conversation_message_path(@message.conversation_id, @message.id) %>');
+       $('#message_form').attr('method', 'patch');
+        console.log(<%#= @message.content %>);
