@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+
   def create
     @conversation = params[:conversation_id]
     @message = Message.new(message_params)
@@ -15,9 +16,14 @@ class MessagesController < ApplicationController
     end
   end
 
+
+
+
+
+
   def destroy
-    authorize! :destroy, @message
     @message = Message.find(params[:id])
+    authorize! :destroy, @message
     @conversation = @message.conversation
 
     if @message.destroy
