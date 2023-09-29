@@ -5,10 +5,10 @@ class MessagesController < ApplicationController
     @message.user = current_user
     respond_to do |format|
       if @message.save
-        format.html { redirect_to conversation_path(@message.conversation), notice: "message sent." }
+        # format.html { redirect_to conversation_path(@message.conversation), notice: "message sent." }
         format.js
       else
-        format.html { redirect_to conversation_path(@conversation),  status: :unprocessable_entity  }
+        # format.html { redirect_to conversation_path(@conversation),  status: :unprocessable_entity  }
         format.js
 
       end
