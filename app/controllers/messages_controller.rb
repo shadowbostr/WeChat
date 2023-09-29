@@ -16,8 +16,8 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @message
     @message = Message.find(params[:id])
+    authorize! :destroy, @message
     @conversation = @message.conversation
 
     if @message.destroy
