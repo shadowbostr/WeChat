@@ -19,15 +19,15 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     authorize! :destroy, @message
     @conversation = @message.conversation
-
+    
+  respond_to do |format|
     if @message.destroy
-      respond_to do |format|
         format.html { redirect_to conversation_path(@conversation) }
         format.js
-      end
     else
       format.js
     end
+  end
   end
 
 
