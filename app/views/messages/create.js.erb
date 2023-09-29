@@ -2,4 +2,5 @@
 <% unless @message.new_record? %>
 $('#messages').append('<%= j render "messages/message", message: @message %>');
 $('textarea').val('');
+console.log("message sent")
 <% end %>
