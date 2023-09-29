@@ -7,14 +7,14 @@
 
 <div class="sticky-bottom fixed-bottom bg-secondary border-top py-3">
   <div class="container">
-    <%= form_with(model: [@conversation, @conversation.messages.build], local: false, remote: true, id: "message_form" ) do |form| %>
+    <%= form_with(model: [@conversation, @conversation.messages.build], id: "message_form" ) do |form| %>
       <%= form.hidden_field :conversation_id, value: @conversation.id %>
       <div class="row align-items-center">
         <div class="col-10">
           <%= form.text_area :content, class: "form-control mb-2", id: "form_text"  %>
         </div>
         <div class="col-2">
-          <%= form.submit 'Send', class: "btn btn-primary w-100", id: "submit_btn" %>
+          <%= form.submit 'Send', remote: true,class: "btn btn-primary w-100", id: "submit_btn" %>
         </div>
       </div>
 
